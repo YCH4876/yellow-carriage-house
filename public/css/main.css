@@ -26,6 +26,20 @@ body {
     font-weight: 100;
 }
 
+.text-primary {
+    color: #e83e8c !important;
+}
+
+.btn-primary {
+    background-color: #e83e8c !important;
+    border-color: #e83e8c !important;
+}
+
+.btn-primary:hover {
+    background-color: #a12860 !important;
+    border-color: #a12860 !important;
+}
+
 .text-subtitle {
     color: #e83e8c !important;
     letter-spacing: .2em;
