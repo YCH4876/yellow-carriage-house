@@ -14,7 +14,7 @@ body {
     background: rgba(0, 0, 0, 0.3);
 }
 
-.font-weight-bolder {
+.font-weight-bold {
     font-weight: 500;
 }
 
@@ -24,6 +24,18 @@ body {
 
 .font-weight-lighter {
     font-weight: 100;
+}
+
+.font-weight-light {
+    font-weight: 300;
+}
+
+.badge .rounded-pill {
+    font-size: 14px !important;
+}
+
+.bg-primary {
+    background-color: #e83e8c !important;
 }
 
 .text-primary {

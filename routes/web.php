@@ -28,4 +28,4 @@ Route::get('/dashboard', function () {
  ROOMS
  ********************/
 
-Route::get('/rooms/{RoomName}', [RoomController::class, 'index']);
+Route::get('/rooms/king-lee-suite', [RoomController::class, 'index']);
