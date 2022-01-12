@@ -27,5 +27,6 @@ Route::get('/dashboard', function () {
 /*******************
  ROOMS
  ********************/
-
 Route::get('/rooms/king-lee-suite', [RoomController::class, 'index']);
+Route::get('/rooms/windsor-queen-suite-plus', [RoomController::class, 'index']);
+Route::get('/rooms/the-carriage-house-apartment-suite', [RoomController::class, 'index']);

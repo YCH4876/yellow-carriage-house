@@ -110,93 +110,46 @@
                 <h2 class="text-center font-weight-bold">Our Rooms</h2>
             </div>
             <div class="row">
-                <div class="col-6 col-md-1 order-1 order-md-1 pt-5 align-self-center text-center">
-                    <button class="btn btn-primary btn-lg" type="button" data-bs-target="#carouselExampleDark"
-                        data-bs-slide="prev">
-                        <i class="bi bi-arrow-left-circle-fill"></i>
-                    </button>
-                </div>
-                <div class="col-12 col-md-10 order-3 order-md-2 align-self-center">
-                    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                        <div class="carousel-inner p-5">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <div class="card shadow">
-                                            <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}"
-                                                class="card-img-top" alt="King Lee Suite Image">
-                                            <div class="card-body">
-                                                <h5 class="card-title">King Lee Suite</h5>
-                                                <a href="/king-lee-suite"
-                                                    class="btn btn-primary mt-3 stretched-link">See More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card shadow">
-                                            <img src="{{ asset('img/rooms/moonlights-dream/moonlights-dream-1.jpg') }}"
-                                                class="card-img-top" alt="The Moonlight's Dream Bedroom Image">
-                                            <div class="card-body">
-                                                <h5 class="card-title">The Moonlight's Dream Bedroom</h5>
-                                                <a href="/the-monnlights-dream-bedroom"
-                                                    class="btn btn-primary mt-3 stretched-link">See
-                                                    More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="col-lg-4 mb-3 mb-md-0">
+                    <div class="card shadow">
+                        <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}" class="card-img-top"
+                            alt="King Lee Suite Image">
+                        <div class="card-body">
+                            <div class="card-title-text">
+                                <h5 class="card-title">King Lee Suite</h5>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <div class="card shadow">
-                                            <img src="{{ asset('img/rooms/windsor-queen/windsor-queen-1.jpg') }}"
-                                                class="card-img-top" alt="The Windsor Queen Suite Image">
-                                            <div class="card-body">
-                                                <h5 class="card-title">The Windsor Queen Suite Plus</h5>
-                                                <a href="/the-windsor-queen-suite"
-                                                    class="btn btn-primary mt-3 stretched-link">See
-                                                    More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card shadow">
-                                            <img src="{{ asset('img/rooms/queen-suite/queen-suite-1.jpg') }}"
-                                                class="card-img-top" alt="The Carriage House Queen Suite Image">
-                                            <div class="card-body">
-                                                <h5 class="card-title">The Carriage House Queen Suite</h5>
-                                                <a href="/the-carriage-house-queen-suite"
-                                                    class="btn btn-primary mt-3 stretched-link">See
-                                                    More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <div class="card shadow">
-                                            <img src="{{ asset('img/rooms/twilight-song/twilight-song-1.jpg') }}"
-                                                class="card-img-top" alt="Twilight Song Room Image">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Twilight Song Room</h5>
-                                                <a href="/king-lee-suite"
-                                                    class="btn btn-primary mt-3 stretched-link">See More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <a href="/rooms/king-lee-suite" class="btn btn-primary mt-3 stretched-link w-100">See
+                                More</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-1 order-2 order-md-3 pt-5 align-self-center text-center">
-                    <button class="btn btn-primary btn-lg" type="button" data-bs-target="#carouselExampleDark"
-                        class="pr-0" data-bs-slide="next">
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </button>
+                <div class="col-lg-4 mb-3 mb-md-0">
+                    <div class="card shadow">
+                        <img src="{{ asset('img/rooms/windsor-queen/windsor-queen-1.jpg') }}" class="card-img-top"
+                            alt="The Windsor Queen Suite Image">
+                        <div class="card-body">
+                            <div class="card-title-text">
+                                <h5 class="card-title">Windsor Queen Suite Plus</h5>
+                            </div>
+                            <a href="/rooms/windsor-queen-suite-plus"
+                                class="btn btn-primary mt-3 stretched-link w-100">See
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow">
+                        <img src="{{ asset('img/rooms/queen-suite/queen-suite-1.jpg') }}" class="card-img-top"
+                            alt="The Carriage House Queen Suite Image">
+                        <div class="card-body">
+                            <div class="card-title-text">
+                                <h5 class="card-title">The Carriage House Apartment Suite</h5>
+                            </div>
+                            <a href="/rooms/the-carriage-house-apartment-suite"
+                                class="btn btn-primary mt-3 stretched-link w-100">See
+                                More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,6 +3,36 @@ body {
     font-weight: 300;
 }
 
+p {
+    line-height: 27px;
+}
+
+.card-title-text {
+    margin-top: 8px;
+}
+
+@media only screen and (min-width: 962px) {
+    .card-title-text {
+        min-height: 50px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .card-title-text {
+        min-height: unset;
+    }
+}
+
+.header-logo {
+    max-width: 50px;
+}
+
+#header-text {
+    font-family: 'Dancing Script';
+    font-size: 28px!important;
+    margin-left: 15px;
+}
+
 #homeDiv {
     background: url("/img/home.jpg");
     background-repeat: none;

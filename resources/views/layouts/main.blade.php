@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- TITLE TAG --}}
-    <title>Yellow Carriage House Inn</title>
+    <title>Yellow Carriage House</title>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <!-- Bootstrap -->
@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/311d1c9e91.js" crossorigin="anonymous"></script>
     <!-- Custom Styles -->
@@ -24,8 +26,8 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
         <div class="container">
-            <a class="navbar-brand text-warning" href="/"><i class="bi bi-house-fill me-2"></i> Yellow Carriage
-                House Inn</a>
+            <a class="navbar-brand" href="/"><img src="{{ asset('img/logo/logo.png') }}" class="header-logo"><span
+                    id="header-text">Yellow Carriage House</span></a>
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -36,8 +38,18 @@
                     <li class="nav-item me-2">
                         <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link text-dark" href="#">Rooms</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Rooms
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/rooms/king-lee-suite">King Lee Suite</a>
+                            <a class="dropdown-item" href="/rooms/windsor-queen-suite-plus">Windsor Queen Suite Plus</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/rooms/the-carriage-houes-apartment-suite">The Carriage House
+                                Apartment Suite</a>
+                        </div>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link text-dark" href="#">Special Events</a>
