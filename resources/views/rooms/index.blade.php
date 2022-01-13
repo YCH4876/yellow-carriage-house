@@ -114,44 +114,52 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6 mb-5 mb-lg-0 @if($roomName == 'king-lee-suite')d-none @endif">
-            <div class="card shadow">
-                <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}" class="card-img-top"
-                    alt="King Lee Suite Image">
-                <div class="card-body">
-                    <div class="card-title-text">
-                        <h5 class="card-title">King Lee Suite</h5>
+</div>
+<div class="bg-light pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <h2 class="mb-4">Other Rooms Available</h2>
+        </div>
+        <div class="row ">
+            <div class="col-12"></div>
+            <div class="col-lg-6 mb-5 mb-lg-0 @if($roomName == 'king-lee-suite')d-none @endif">
+                <div class="card shadow">
+                    <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}" class="card-img-top"
+                        alt="King Lee Suite Image">
+                    <div class="card-body">
+                        <div class="card-title-text">
+                            <h5 class="card-title">King Lee Suite</h5>
+                        </div>
+                        <a href="/rooms/king-lee-suite" class="btn btn-primary mt-3 stretched-link w-100">See
+                            More</a>
                     </div>
-                    <a href="/rooms/king-lee-suite" class="btn btn-primary mt-3 stretched-link w-100">See
-                        More</a>
                 </div>
             </div>
-        </div>
-        <div class="col-6 mb-5 mb-lg-0 @if($roomName == 'windsor-queen-suite-plus')d-none @endif">
-            <div class="card shadow">
-                <img src="{{ asset('img/rooms/windsor-queen/windsor-queen-1.jpg') }}" class="card-img-top"
-                    alt="The Windsor Queen Suite Image">
-                <div class="card-body">
-                    <div class="card-title-text">
-                        <h5 class="card-title">Windsor Queen Suite Plus</h5>
+            <div class="col-lg-6 mb-5 mb-lg-0 @if($roomName == 'windsor-queen-suite-plus')d-none @endif">
+                <div class="card shadow">
+                    <img src="{{ asset('img/rooms/windsor-queen/windsor-queen-1.jpg') }}" class="card-img-top"
+                        alt="The Windsor Queen Suite Image">
+                    <div class="card-body">
+                        <div class="card-title-text">
+                            <h5 class="card-title">Windsor Queen Suite Plus</h5>
+                        </div>
+                        <a href="/rooms/windsor-queen-suite-plus" class="btn btn-primary mt-3 stretched-link w-100">See
+                            More</a>
                     </div>
-                    <a href="/rooms/windsor-queen-suite-plus" class="btn btn-primary mt-3 stretched-link w-100">See
-                        More</a>
                 </div>
             </div>
-        </div>
-        <div class="col-6 @if($roomName == 'the-carriage-house-apartment-suite')d-none @endif">
-            <div class="card shadow">
-                <img src="{{ asset('img/rooms/queen-suite/queen-suite-1.jpg') }}" class="card-img-top"
-                    alt="The Carriage House Queen Suite Image">
-                <div class="card-body">
-                    <div class="card-title-text">
-                        <h5 class="card-title">The Carriage House Apartment Suite</h5>
+            <div class="col-lg-6 @if($roomName == 'the-carriage-house-apartment-suite')d-none @endif">
+                <div class="card shadow">
+                    <img src="{{ asset('img/rooms/queen-suite/queen-suite-1.jpg') }}" class="card-img-top"
+                        alt="The Carriage House Queen Suite Image">
+                    <div class="card-body">
+                        <div class="card-title-text">
+                            <h5 class="card-title">The Carriage House Apartment Suite</h5>
+                        </div>
+                        <a href="/rooms/the-carriage-house-apartment-suite"
+                            class="btn btn-primary mt-3 stretched-link w-100">See
+                            More</a>
                     </div>
-                    <a href="/rooms/the-carriage-house-apartment-suite"
-                        class="btn btn-primary mt-3 stretched-link w-100">See
-                        More</a>
                 </div>
             </div>
         </div>

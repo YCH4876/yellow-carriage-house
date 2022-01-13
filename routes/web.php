@@ -24,6 +24,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/policies', function () {
+    return view('policies');
+});
+
 /*******************
  ROOMS
  ********************/
