@@ -1,71 +1,12 @@
+/************************************************************
+GENERAL
+************************************************************/
+
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 18px;
 }
-
-/************************************************************
-GALLERY PAGE
-************************************************************/
-
-.gallery-image-container {
-    overflow: hidden;
-}
-
-.gallery-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition-duration: .3s;
-}
-
-.gallery-image:hover {
-    transform: scale(1.2);
-    transition-duration: .3s;
-}
-
-#gallery .row>*,
-.gallery-row .row>* {
-    padding: 0px !important;
-}
-
-.gallery-image-container-header {
-    overflow: hidden;
-}
-
-.gallery-image-header {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition-duration: .3s;
-}
-
-#gallery .row>* {
-    padding: 0px;
-}
-
-/************************************************************
-MAP
-************************************************************/
-
-.map-responsive {
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
-}
-
-.map-responsive iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
-
-/************************************************************
-GENERAL
-************************************************************/
 
 p {
     line-height: 27px;
@@ -154,6 +95,66 @@ p {
     font-size: 1.1em;
     text-transform: uppercase;
     margin-bottom: 20px;
+}
+
+
+/************************************************************
+GALLERY PAGE
+************************************************************/
+
+.gallery-image-container {
+    overflow: hidden;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition-duration: .3s;
+}
+
+.gallery-image:hover {
+    transform: scale(1.2);
+    transition-duration: .3s;
+}
+
+#gallery .row>*,
+.gallery-row .row>* {
+    padding: 0px !important;
+}
+
+.gallery-image-container-header {
+    overflow: hidden;
+}
+
+.gallery-image-header {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition-duration: .3s;
+}
+
+#gallery .row>* {
+    padding: 0px;
+}
+
+/************************************************************
+MAP
+************************************************************/
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 /************************************************************

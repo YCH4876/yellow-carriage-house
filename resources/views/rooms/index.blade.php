@@ -251,7 +251,7 @@
 </div>
 <div class="pb-5 pt-5">
     <div class="container">
-        <h2 class="text-center font-weight-bold mb-3">Contact Us</h2>
+        <h2 class="mb-4 text-subtitle text-center">Contact Us</h2>
         <div class="row">
             <div class="col-12 col-lg-6 col-xl-7">
                 <div class="map-responsive">
