@@ -25,13 +25,13 @@
         </div>
         @elseif($roomName == 'the-carriage-house-apartment-suite')
         <div class="col-12 col-lg-4 gallery-image-container-header">
-            <img src="{{ asset('img\rooms\windsor-queen\1.jpg') }}" class="gallery-image-header">
+            <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\1.jpg') }}" class="gallery-image-header">
         </div>
         <div class="col-lg-4 d-none d-lg-inline gallery-image-container-header">
-            <img src="{{ asset('img\rooms\windsor-queen\2.jpg') }}" class="gallery-image-header">
+            <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\2.jpg') }}" class="gallery-image-header">
         </div>
         <div class="col-lg-4 d-none d-lg-inline gallery-image-container-header">
-            <img src="{{ asset('img\rooms\windsor-queen\3.jpg') }}" class="gallery-image-header">
+            <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\3.jpg') }}" class="gallery-image-header">
         </div>
         @endif
     </div>
@@ -102,7 +102,7 @@
                     <li class="list-inline-item me-2 my-2">
                         <span class="badge rounded-pill bg-primary py-2 px-3 font-weight-bold">
                             <i class="bi bi-thermometer-half me-2"></i>
-                            Individually Controller Thermostat
+                            Individually Controlled Thermostat
                         </span>
                     </li>
                     <li class="list-inline-item me-2 my-2">
@@ -140,58 +140,58 @@
         <div id="gallery" class="container mt-4 mb-5">
             <div class="row">
                 @if($roomName == 'king-lee-suite')
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\king-lee\king-lee-1.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\king-lee\king-lee-2.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\king-lee\king-lee-3.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\king-lee\king-lee-1.jpg') }}" class="gallery-image ">
                 </div>
                 @elseif($roomName == 'windsor-queen-suite-plus')
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\1.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\2.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\3.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\4.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\5.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\6.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\7.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\8.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\9.jpg') }}" class="gallery-image ">
                 </div>
                 @elseif($roomName == 'the-carriage-house-apartment-suite')
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
-                    <img src="{{ asset('img\rooms\windsor-queen\1.jpg') }}" class="gallery-image ">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\1.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
-                    <img src="{{ asset('img\rooms\windsor-queen\2.jpg') }}" class="gallery-image ">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\2.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
-                    <img src="{{ asset('img\rooms\windsor-queen\3.jpg') }}" class="gallery-image ">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\3.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 gallery-image-container">
-                    <img src="{{ asset('img\rooms\windsor-queen\4.jpg') }}" class="gallery-image ">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\the-carriage-house-apartment-suite\4.jpg') }}" class="gallery-image ">
                 </div>
             </div>
             @endif
