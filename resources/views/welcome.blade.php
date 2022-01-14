@@ -86,28 +86,10 @@
                     </div>
                 </div>
             </div>
-            {{--
-            <div class="mt-3">
-                <p>Our house and guest rooms include the following</p>
-                <ul>
-                    <li>In Suite breakfast items, refreshments and snacks (suites have a mini refrigerator, Keurig and
-                        seating area)</li>
-                    <li>Private Entrances and Covered Verandas</li>
-                    <li>Large Private Suites with Balcony or Patio</li>
-                    <li>Luxury Bedding, Linens and Individual Robes</li>
-                    <li>Complimentary Cable TV and WiFi</li>
-                    <li>Individually Controlled Thermostats</li>
-                    <li>Soaking Tubs/Walk-In Showers</li>
-                    <li>Outdoor Seating areas and Fire pit</li>
-                    <li>Large Central Gathering Area and Dining Room with a beverage cooler, breakfast items and snacks
-                    </li>
-                </ul>
-            </div>
-            --}}
         </div>
     </div>
 
-    <div class="bg-light pb-5 pt-5">
+    <div id="contact" class="bg-light pb-5 pt-5">
         <div class="container">
             <h2 class="text-center text-subtitle mb-3">Contact Us</h2>
             <div class="row">

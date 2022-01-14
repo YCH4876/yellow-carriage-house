@@ -40,25 +40,31 @@
                             <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Rooms
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/rooms/king-lee-suite">King Lee Suite</a>
                                 <a class="dropdown-item" href="/rooms/windsor-queen-suite-plus">Windsor Queen Suite
                                     Plus</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/rooms/the-carriage-houes-apartment-suite">The Carriage
+                                <a class="dropdown-item" href="/rooms/the-carriage-house-apartment-suite">The Carriage
                                     House
                                     Apartment Suite</a>
-                            </div>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <a class="dropdown-item" href="/policies">Policies</a>
+                            </ul>
                         </li>
                         <li class="nav-item me-2">
                             <a class="nav-link text-dark" href="/special-events">Special Events</a>
                         </li>
-                        <li class="nav-item ml-2">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" href="/local-attractions">Local Attractions</a>
+                        </li>
+                        <li class="nav-item ms-0 ms-lg-4">
+                            <a class="btn btn-primary" href="/#contact">Book Now</a>
                         </li>
                     </ul>
                 </div>
