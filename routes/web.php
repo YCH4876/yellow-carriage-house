@@ -28,6 +28,14 @@ Route::get('/policies', function () {
     return view('policies');
 });
 
+Route::get('/special-events', function () {
+    return view('specialEvents');
+});
+
+Route::get('/local-attractions', function () {
+    return view('localAttractions');
+});
+
 /*******************
  ROOMS
  ********************/

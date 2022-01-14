@@ -30,7 +30,7 @@
     <div class="pb-5 pt-5">
         <div class="container ">
             <div class="mb-5">
-                <h2 class="text-center font-weight-bold mb-3">Our Rooms</h2>
+                <h2 class="text-center text-subtitle mb-3">Our Rooms</h2>
                 <p>
                     Our spacious suites have antique furnishings, luxurious beds, private baths, fine linens,
                     Keurigs with pods, free Wi-Fi, mini refrigerators and Cable TV. We offer a quiet,
@@ -73,8 +73,8 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/queen-suite/queen-suite-1.jpg') }}" class="card-img-top"
-                            alt="The Carriage House Queen Suite Image">
+                        <img src="{{ asset('img/rooms/the-carriage-house-apartment-suite/queen-suite-1.jpg') }}"
+                            class="card-img-top" alt="The Carriage House Queen Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">
                                 <h5 class="card-title">The Carriage House Apartment Suite</h5>
@@ -109,7 +109,7 @@
 
     <div class="bg-light pb-5 pt-5">
         <div class="container">
-            <h2 class="text-center font-weight-bold mb-3">Contact Us</h2>
+            <h2 class="text-center text-subtitle mb-3">Contact Us</h2>
             <div class="row">
                 <div class="col-12 col-lg-6 col-xl-7">
                     <div class="map-responsive">

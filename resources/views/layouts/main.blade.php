@@ -37,7 +37,7 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item me-2">
-                            <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -55,10 +55,10 @@
                             </div>
                         </li>
                         <li class="nav-item me-2">
-                            <a class="nav-link text-dark" href="#">Special Events</a>
+                            <a class="nav-link text-dark" href="/special-events">Special Events</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link text-dark" href="#">Local Attractions</a>
+                            <a class="nav-link text-dark" href="/local-attractions">Local Attractions</a>
                         </li>
                     </ul>
                 </div>
