@@ -3,8 +3,8 @@
 
 <body class="antialiased">
     <div id="homeDiv">
-        <div class="overlayDark">
-            <div class="container">
+        <div class="overlayDark pt-5 pb-5">
+            <div class="container pt-5 pb-5">
                 <div class="text-center text-white justify-content-center align-self-center pt-5 pb-5">
                     <h1 class="mb-2 pt-5 font-weight-bold cursive text-white heading-text">Yellow Carriage House</h1>
                     <h5 class="font-weight-light pb-5">Located in the heart of Horse Country & the Bourbon Trail</h5>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}" class="card-img-top"
+                        <img src="{{ asset('img/rooms/king-lee/1.jpg') }}" class="card-img-top"
                             alt="King Lee Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/windsor-queen/windsor-queen-1.jpg') }}" class="card-img-top"
+                        <img src="{{ asset('img/rooms/windsor-queen/2.jpg') }}" class="card-img-top"
                             alt="The Windsor Queen Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">

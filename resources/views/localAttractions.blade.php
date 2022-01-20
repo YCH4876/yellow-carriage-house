@@ -19,6 +19,7 @@
         <li>Science Hill Inn Restaurant</li>
         <li>Claudia Sanders Dinner House</li>
         <li>Bell House Restaurant</li>
+        <li>Jeptha Creed Distillery</li>
         <li>Talon Winery</li>
         <li>Outlet Shoppes of the Bluegrass</li>
         <li>Kentucky Horse Park</li>

@@ -5,13 +5,13 @@
     <div class="row">
         @if($roomName == 'king-lee-suite')
         <div class="col-12 col-lg-4 gallery-image-container-header">
-            <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}" class="gallery-image-header">
+            <img src="{{ asset('img/rooms/king-lee/1.jpg') }}" class="gallery-image-header">
         </div>
         <div class="col-lg-4 d-none d-lg-inline gallery-image-container-header">
-            <img src="{{ asset('img/rooms/king-lee/king-lee-2.jpg') }}" class="gallery-image-header">
+            <img src="{{ asset('img/rooms/king-lee/2.jpg') }}" class="gallery-image-header">
         </div>
         <div class="col-lg-4 d-none d-lg-inline gallery-image-container-header">
-            <img src="{{ asset('img/rooms/king-lee/king-lee-3.jpg') }}" class="gallery-image-header">
+            <img src="{{ asset('img/rooms/king-lee/3.jpg') }}" class="gallery-image-header">
         </div>
         @elseif($roomName == 'windsor-queen-suite-plus')
         <div class="col-12 col-lg-4 gallery-image-container-header">
@@ -80,7 +80,14 @@
                             Complete Kitchen
                         </span>
                     </li>
+                    <li class="list-inline-item me-2 my-2">
+                        <span class="badge rounded-pill bg-primary py-2 px-3 font-weight-bold">
+                            <i class="fa fa-bath me-2"></i>
+                            Antique Clawfoot Tub
+                        </span>
+                    </li>
                     @endif
+                    @if($roomName != 'the-carriage-house-apartment-suite')
                     <li class="list-inline-item me-2 my-2">
                         <span class="badge rounded-pill bg-primary py-2 px-3 font-weight-bold">
                             <i class="fa fa-bath me-2"></i>
@@ -93,6 +100,7 @@
                             Large Walk In Shower
                         </span>
                     </li>
+                    @endif
                     <li class="list-inline-item me-2 my-2">
                         <span class="badge rounded-pill bg-primary py-2 px-3 font-weight-bold">
                             <i class="bi bi-tv-fill me-2"></i>
@@ -140,17 +148,14 @@
         <div id="gallery" class="container mt-4 mb-5">
             <div class="row">
                 @if($roomName == 'king-lee-suite')
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                    <img src="{{ asset('img\rooms\king-lee\king-lee-1.jpg') }}" class="gallery-image ">
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\king-lee\1.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                    <img src="{{ asset('img\rooms\king-lee\king-lee-2.jpg') }}" class="gallery-image ">
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\king-lee\2.jpg') }}" class="gallery-image ">
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                    <img src="{{ asset('img\rooms\king-lee\king-lee-3.jpg') }}" class="gallery-image ">
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                    <img src="{{ asset('img\rooms\king-lee\king-lee-1.jpg') }}" class="gallery-image ">
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
+                    <img src="{{ asset('img\rooms\king-lee\3.jpg') }}" class="gallery-image ">
                 </div>
                 @elseif($roomName == 'windsor-queen-suite-plus')
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
@@ -173,12 +178,6 @@
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
                     <img src="{{ asset('img\rooms\windsor-queen\7.jpg') }}" class="gallery-image ">
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                    <img src="{{ asset('img\rooms\windsor-queen\8.jpg') }}" class="gallery-image ">
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                    <img src="{{ asset('img\rooms\windsor-queen\9.jpg') }}" class="gallery-image ">
                 </div>
                 @elseif($roomName == 'the-carriage-house-apartment-suite')
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-3 mb-sm-0 mb-3 mb-sm-0 gallery-image-container">
@@ -208,8 +207,7 @@
             <div class="col-12"></div>
             <div class="col-lg-6 mb-5 mb-lg-0 @if($roomName == 'king-lee-suite')d-none @endif">
                 <div class="card shadow">
-                    <img src="{{ asset('img/rooms/king-lee/king-lee-1.jpg') }}" class="card-img-top"
-                        alt="King Lee Suite Image">
+                    <img src="{{ asset('img/rooms/king-lee/1.jpg') }}" class="card-img-top" alt="King Lee Suite Image">
                     <div class="card-body">
                         <div class="card-title-text">
                             <h5 class="card-title">King Lee Suite</h5>
@@ -221,7 +219,7 @@
             </div>
             <div class="col-lg-6 mb-5 mb-lg-0 @if($roomName == 'windsor-queen-suite-plus')d-none @endif">
                 <div class="card shadow">
-                    <img src="{{ asset('img/rooms/windsor-queen/windsor-queen-1.jpg') }}" class="card-img-top"
+                    <img src="{{ asset('img/rooms/windsor-queen/2.jpg') }}" class="card-img-top"
                         alt="The Windsor Queen Suite Image">
                     <div class="card-body">
                         <div class="card-title-text">
