@@ -219,7 +219,7 @@
             </div>
             <div class="col-lg-6 mb-5 mb-lg-0 @if($roomName == 'windsor-queen-suite-plus')d-none @endif">
                 <div class="card shadow">
-                    <img src="{{ asset('img/rooms/windsor-queen/2.jpg') }}" class="card-img-top"
+                    <img src="{{ asset('img/rooms/windsor-queen/1.jpg') }}" class="card-img-top"
                         alt="The Windsor Queen Suite Image">
                     <div class="card-body">
                         <div class="card-title-text">

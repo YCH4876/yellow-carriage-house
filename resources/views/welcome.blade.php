@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/windsor-queen/2.jpg') }}" class="card-img-top"
+                        <img src="{{ asset('img/rooms/windsor-queen/1.jpg') }}" class="card-img-top"
                             alt="The Windsor Queen Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">
