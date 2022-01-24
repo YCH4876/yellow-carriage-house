@@ -42,3 +42,27 @@ Route::get('/local-attractions', function () {
 Route::get('/rooms/king-lee-suite', [RoomController::class, 'index']);
 Route::get('/rooms/windsor-queen-suite-plus', [RoomController::class, 'index']);
 Route::get('/rooms/the-carriage-house-apartment-suite', [RoomController::class, 'index']);
+Route::get('/gathering-room', function () {
+    return view('rooms.gatheringRoom');
+});
+
+
+/********************
+ * REDIRECTS
+ *******************/
+
+Route::get('/contact_us_inquiries_reservations', function() {
+    return redirect('/#contact');
+});
+Route::get('/rooms_and_amenities', function() {
+    return redirect('/#rooms');
+});
+Route::get('/local_attractions', function() {
+    return redirect('/local-attractions');
+});
+Route::get('/special_events_weddings_and_receptions', function() {
+    return redirect('/special-events');
+});
+Route::get('/gathering_room', function() {
+    return redirect('/gathering-room');
+});

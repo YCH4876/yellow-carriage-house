@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="pb-5 pt-5">
+    <div id="rooms" class="pb-5 pt-5">
         <div class="container ">
             <div class="mb-5">
                 <h2 class="text-center text-subtitle mb-3">Our Rooms</h2>

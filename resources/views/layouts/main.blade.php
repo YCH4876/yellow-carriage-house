@@ -23,6 +23,19 @@
         <script src="https://kit.fontawesome.com/311d1c9e91.js" crossorigin="anonymous"></script>
         <!-- Custom Styles -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTNB03FHYQ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-NTNB03FHYQ');
+
+        </script>
     </head>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
