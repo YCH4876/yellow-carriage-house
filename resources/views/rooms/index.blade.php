@@ -139,9 +139,11 @@
                 </p>
                 <hr class="my-4">
                 <div class="d-grid mb-4">
-                    <a href="tel:5025365338" class="btn btn-primary"><i class="bi bi-calendar-check-fill me-2"></i>Book
-                        your
-                        stay</a>
+                    <a @if($roomName=='king-lee-suite' ) href="https://www.airbnb.com/rooms/562950629780152619"
+                        target="_blank" @elseif($roomName=='windsor-queen-suite-plus' )
+                        href="https://www.airbnb.com/rooms/562981477179776189" target="_blank" @else
+                        href="tel:5025365338" @endif class="btn btn-primary"><i
+                            class="bi bi-calendar-check-fill me-2"></i>Book your stay</a>
                 </div>
             </div>
         </div>

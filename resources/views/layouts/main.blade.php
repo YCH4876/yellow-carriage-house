@@ -77,7 +77,13 @@
                             <a class="nav-link text-dark" href="/local-attractions">Local Attractions</a>
                         </li>
                         <li class="nav-item ms-0 ms-lg-4">
-                            <a class="btn btn-primary" href="/#contact">Book Now</a>
+                            <a class="btn btn-primary" @isset($roomName) @if($roomName=='king-lee-suite' )
+                                href="https://www.airbnb.com/rooms/562950629780152619" target="_blank"
+                                @elseif($roomName=='windsor-queen-suite-plus' )
+                                href="https://www.airbnb.com/rooms/562981477179776189" target="_blank" @else
+                                href="tel:5025365338" @endif @endisset href="/#contact">
+
+                                Book Now</a>
                         </li>
                     </ul>
                 </div>
