@@ -44,7 +44,7 @@
                 </p>
             </div>
             <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card shadow">
                         <img src="{{ asset('img/rooms/king-lee/1.jpg') }}" class="card-img-top"
                             alt="King Lee Suite Image">
@@ -57,6 +57,7 @@
                         </div>
                     </div>
                 </div>
+                {{--
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="card shadow">
                         <img src="{{ asset('img/rooms/windsor-queen/1.jpg') }}" class="card-img-top"
@@ -71,7 +72,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+
+                --}}
+                <div class="col-lg-6">
                     <div class="card shadow">
                         <img src="{{ asset('img/rooms/the-carriage-house-apartment-suite/queen-suite-1.jpg') }}"
                             class="card-img-top" alt="The Carriage House Queen Suite Image">
@@ -104,9 +107,8 @@
                     <h5>Yellow Carriage House</h5>
                     <hr>
                     <p><i class="bi bi-person-fill me-3"></i>Amy Steele, Innkeeper</p>
-                    <p><a href="tel:5025365338" class="text-dark text-decoration-none"><i
-                                class="bi bi-telephone-fill me-3"></i>(502)
-                            536-5338</a></p>
+                    <p><a href="tel:5028024310" class="text-dark text-decoration-none"><i
+                                class="bi bi-telephone-fill me-3"></i>(502) 802-4310</a></p>
                     <p><a href="mailto:info@yellowcarriagehouse.com" class="text-dark text-decoration-none"><i
                                 class="bi bi-envelope-fill me-3"></i>info@yellowcarriagehouse.com</a></p>
                     <p><a href="https://www.google.com/maps/dir//Yellow+Carriage+House+4876+Shelbyville+Rd+Simpsonville,+KY+40067/@38.2179679,-85.3091878,13z/data=!4m5!4m4!1m0!1m2!1m1!1s0x8869bfd72f30566b:0x6f2052f07c06e4f4"
