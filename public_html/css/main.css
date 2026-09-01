@@ -172,18 +172,197 @@ HOME PAGE
 ************************************************************/
 
 .heading-text {
-    font-size: 4em;
+    /* Scales with the viewport so it never overflows a phone. The hero is a
+       full screen now rather than a short band, so the upper bound is much
+       larger than the old flat 4em - there is room for it. */
+    font-size: clamp(2.5rem, 8.5vw, 7rem);
+    line-height: 1.05;
+}
+
+/* The hero strapline, scaled to sit under the enlarged title. */
+#homeDiv h5 {
+    font-size: clamp(1rem, 2.1vw, 1.9rem);
+    line-height: 1.35;
+}
+
+/* The header sticks to the top of the viewport as the page scrolls. It also
+   has to out-rank the hero, which is position:fixed and would otherwise paint
+   straight over it, and the content sections above that. Hero is 0, content 1,
+   so the header takes 3. Its .navbar already carries bg-white, so content
+   scrolling underneath does not show through. */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+/* The footer is static but still needs to clear the fixed hero. */
+footer {
+    position: relative;
+    z-index: 2;
 }
 
 #header-text {
     font-family: 'Dancing Script';
-    font-size: 28px !important;
-    margin-left: 15px;
+    /* Was a flat 28px, which made the brand 290px wide. With Bootstrap's 16px
+       brand margin and the 56px toggler that needs 362px, more than a 375px
+       phone has once the container's padding is taken off - so the toggler
+       wrapped to a second row and the sticky header stood 124px tall, 15% of
+       the screen, permanently. Scaling it keeps brand and toggler on one row
+       down to a 320px phone, and still reaches the original 28px from the sm
+       breakpoint upwards. */
+    font-size: clamp(1.25rem, 5.6vw, 1.75rem) !important;
+    /* The gap tightens with the text. At 320px the brand was overshooting the
+       available width by 2px, which is enough to wrap the toggler onto its own
+       row again. */
+    margin-left: clamp(8px, 2.5vw, 15px);
 }
 
+/* ---------------------------------------------------------------------------
+   Home hero
+   ---------------------------------------------------------------------------
+   The hero is pinned to the viewport and the page content scrolls up over it.
+   This uses position:fixed rather than background-attachment:fixed, which iOS
+   Safari renders unreliably (it commonly ignores it or stutters badly).
+
+   The image itself comes from --hero-image, set in layouts/main.blade.php so it
+   can carry a cache-busting version. A URL hardcoded here could not: replacing
+   the photo in place would leave returning visitors seeing the previous one out
+   of their browser cache.
+--------------------------------------------------------------------------- */
+
 #homeDiv {
-    background: url("/img/home.jpg");
-    background-repeat: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh; /* dvh accounts for mobile browser chrome; vh is the fallback */
+    z-index: 0;
+    background-image: var(--hero-image);
+    background-repeat: no-repeat;
+    /* The photo is 4:3 but this frame is far wider, so filling it crops roughly
+       a quarter off the top and bottom. Centring split that evenly and spent
+       the bottom of the frame on driveway while clipping the roofline. Biasing
+       the focal point upwards keeps the whole roof in shot and trims the gravel
+       instead. */
+    background-position: center 15%;
+    /* Fills the viewport edge to edge at every size. "contain" was tried here
+       so the whole photo would be visible, but on a screen wider than the
+       photo's 3:2 it left dark bars down both sides. Filling reads better; the
+       small crop it costs is off the top and bottom, away from the house. */
     background-size: cover;
-    background-position: center;
+    background-color: #241f1c;
+}
+
+#homeDiv .overlayDark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Reserves a screenful in normal flow so the content below starts beneath the
+   hero, then slides over it as the page scrolls. */
+#homeSpacer {
+    height: 100vh;
+    height: 100dvh;
+}
+
+/* Everything after the spacer sits above the fixed hero, so it covers the photo
+   on the way up. */
+#homeSpacer~* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Those sections must also be OPAQUE. A section with no background of its own
+   is transparent, and the hero - image and heading text alike - shows straight
+   through it.
+
+   Wrapped in :where() so this carries zero specificity: it is only a floor, and
+   any section that sets its own background (.bg-light, .bg-dark, a utility
+   class) still wins. Without :where(), the #id in the selector would outrank
+   every one of those. */
+:where(#homeSpacer~*) {
+    background-color: #fff;
+}
+
+.home-content {
+    background-color: #f8f9fa;
+}
+
+/* --- scroll cue ---------------------------------------------------------- */
+
+.hero-scroll-cue {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hero-scroll-cue:hover,
+.hero-scroll-cue:focus {
+    color: #fff;
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(3px);
+}
+
+.hero-chevron {
+    font-size: 1.75rem;
+    line-height: 1;
+    animation: heroChevronBounce 2.2s ease-in-out infinite;
+}
+
+@keyframes heroChevronBounce {
+
+    0%,
+    25%,
+    55%,
+    100% {
+        transform: translateY(0);
+    }
+
+    38% {
+        transform: translateY(-9px);
+    }
+
+    47% {
+        transform: translateY(-4px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-chevron {
+        animation: none;
+    }
+
+    .hero-scroll-cue {
+        transition: none;
+    }
+}
+
+/* Keep the title clear of the scroll cue on short screens. */
+@media (max-height: 520px) {
+    .hero-scroll-cue {
+        bottom: 0.75rem;
+    }
 }
