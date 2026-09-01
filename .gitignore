@@ -1,15 +1,35 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+*.log
+.DS_Store
 .env
 .env.backup
+.env.production
+.phpactor.json
 .phpunit.result.cache
-docker-compose.override.yml
+/.codex
+/.cursor/
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+# SiteGround generates these in the domain root alongside the app. Ignoring
+# them keeps `git status` clean on the server, so the deployed directory is a
+# tidy working tree rather than one perpetually reporting untracked files.
+/logs
+/webstats
+# /public_html/build is intentionally NOT ignored: this site is deployed
+# without a build step, so the compiled Vite assets are committed. Run
+# `npm run build` and commit public_html/build whenever resources/css or
+# resources/js changes.
+/public_html/fonts-manifest.dev.json
+/public_html/hot
+/public_html/storage
+/storage/*.key
+/storage/pail
+/vendor
+_ide_helper.php
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
+Thumbs.db
