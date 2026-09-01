@@ -172,14 +172,31 @@ HOME PAGE
 ************************************************************/
 
 .heading-text {
-    /* Scales with the viewport so it never overflows a phone, and never
-       outgrows the hero on a large display. */
-    font-size: clamp(2.25rem, 9vw, 4em);
+    /* Scales with the viewport so it never overflows a phone. The hero is a
+       full screen now rather than a short band, so the upper bound is much
+       larger than the old flat 4em - there is room for it. */
+    font-size: clamp(2.5rem, 8.5vw, 7rem);
+    line-height: 1.05;
 }
 
-/* The hero is position:fixed, so it would otherwise paint over the static
-   header and footer. Both need to sit above it in the stacking order. */
-header,
+/* The hero strapline, scaled to sit under the enlarged title. */
+#homeDiv h5 {
+    font-size: clamp(1rem, 2.1vw, 1.9rem);
+    line-height: 1.35;
+}
+
+/* The header sticks to the top of the viewport as the page scrolls. It also
+   has to out-rank the hero, which is position:fixed and would otherwise paint
+   straight over it, and the content sections above that. Hero is 0, content 1,
+   so the header takes 3. Its .navbar already carries bg-white, so content
+   scrolling underneath does not show through. */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+/* The footer is static but still needs to clear the fixed hero. */
 footer {
     position: relative;
     z-index: 2;
@@ -215,17 +232,12 @@ footer {
     background-image: var(--hero-image);
     background-repeat: no-repeat;
     background-position: center;
-    /* Portrait and narrow screens crop, because "contain" here would shrink the
-       photo to a thin strip with most of the screen empty. */
+    /* Fills the viewport edge to edge at every size. "contain" was tried here
+       so the whole photo would be visible, but on a screen wider than the
+       photo's 3:2 it left dark bars down both sides. Filling reads better; the
+       small crop it costs is off the top and bottom, away from the house. */
     background-size: cover;
     background-color: #241f1c;
-}
-
-/* Wide enough that the whole 3:2 photo can be shown without looking stranded. */
-@media (min-width: 768px) and (min-aspect-ratio: 5/4) {
-    #homeDiv {
-        background-size: contain;
-    }
 }
 
 #homeDiv .overlayDark {
@@ -247,11 +259,23 @@ footer {
     height: 100dvh;
 }
 
-/* Everything after the spacer sits above the fixed hero and is opaque, so it
-   covers the photo on the way up. */
+/* Everything after the spacer sits above the fixed hero, so it covers the photo
+   on the way up. */
 #homeSpacer~* {
     position: relative;
     z-index: 1;
+}
+
+/* Those sections must also be OPAQUE. A section with no background of its own
+   is transparent, and the hero - image and heading text alike - shows straight
+   through it.
+
+   Wrapped in :where() so this carries zero specificity: it is only a floor, and
+   any section that sets its own background (.bg-light, .bg-dark, a utility
+   class) still wins. Without :where(), the #id in the selector would outrank
+   every one of those. */
+:where(#homeSpacer~*) {
+    background-color: #fff;
 }
 
 .home-content {
