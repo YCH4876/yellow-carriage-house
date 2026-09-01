@@ -23,9 +23,37 @@ set -euo pipefail
 
 NEW_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(dirname "$NEW_DIR")"
-PHP="${PHP_BIN:-php}"
 COMPOSER="${COMPOSER_BIN:-composer}"
 STAMP="$(date +%Y%m%d-%H%M%S)"
+
+# Pick a usable PHP. SiteGround's default `php` on PATH is frequently older
+# than the site's own version, so fall back to scanning the versioned binaries.
+# Laravel 13 needs >= 8.3. The upper bound exists because nette/schema and
+# nette/utils (via league/commonmark) currently cap at 8.5 - without it, an
+# installed 8.6 would be picked and composer would fail partway through.
+detect_php() {
+    local candidate best="" best_id=0 id
+    if [ -n "${PHP_BIN:-}" ]; then printf '%s' "$PHP_BIN"; return; fi
+    if command -v php >/dev/null 2>&1 \
+       && php -r 'exit(PHP_VERSION_ID >= 80300 && PHP_VERSION_ID < 80600 ? 0 : 1);' 2>/dev/null; then
+        printf 'php'; return
+    fi
+    # SiteGround exposes CLI builds as /usr/local/bin/php84 -> php84/bin/php-cli.
+    # The bare /usr/local/php84/bin/php is the CGI build, which has no -r flag;
+    # the numeric check below discards it (and anything else non-CLI).
+    for candidate in /usr/local/bin/php8* /usr/local/php8*/bin/php-cli \
+                     /usr/local/php8*/bin/php /opt/php8*/bin/php /usr/bin/php8.*; do
+        [ -x "$candidate" ] || continue
+        id="$("$candidate" -r 'echo PHP_VERSION_ID;' 2>/dev/null)" || continue
+        case "$id" in ''|*[!0-9]*) continue ;; esac
+        if [ "$id" -ge 80300 ] && [ "$id" -lt 80600 ] && [ "$id" -gt "$best_id" ]; then
+            best="$candidate"; best_id="$id"
+        fi
+    done
+    printf '%s' "$best"
+}
+
+PHP="$(detect_php)"
 
 say()  { printf '\n\033[1m==> %s\033[0m\n' "$1"; }
 warn() { printf '\033[33m    %s\033[0m\n' "$1"; }
@@ -40,10 +68,21 @@ say "Checking the environment"
 [ -d "$ROOT/.git" ]       && die "$ROOT is already a git repository. This script is for the first deploy only; use ./deploy.sh instead."
 [ -e "$ROOT/old" ]        && die "$ROOT/old already exists. Remove or rename it before running this."
 
-command -v "$PHP" >/dev/null 2>&1 || die "php binary '$PHP' not found. Set PHP_BIN to its full path."
+[ -n "$PHP" ] && command -v "$PHP" >/dev/null 2>&1 \
+  || die "No PHP between 8.3 and 8.5 found. Set PHP_BIN explicitly, e.g. PHP_BIN=/usr/local/php84/bin/php"
 "$PHP" -r 'exit(PHP_VERSION_ID >= 80300 ? 0 : 1);' 2>/dev/null \
   || die "$PHP is $("$PHP" -r 'echo PHP_VERSION;' 2>/dev/null); Laravel 13 needs 8.3+. Set PHP_BIN to a newer binary."
 command -v "$COMPOSER" >/dev/null 2>&1 || die "composer binary '$COMPOSER' not found. Set COMPOSER_BIN."
+
+# Run composer under the PHP chosen above. SiteGround ships `composer` as a
+# shell wrapper that execs "$PHP_BIN" resolved against /usr/local/bin, so it
+# takes a bare binary name rather than a path. Left alone it uses the account
+# default - 8.2 on this host - and refuses to install anything at all, because
+# composer.json requires ^8.3. Where composer is not that wrapper, PHP_BIN is
+# simply ignored and this is a no-op.
+run_composer() {
+    PHP_BIN="$(basename "$PHP")" "$COMPOSER" "$@"
+}
 
 echo "    app root      : $ROOT"
 echo "    new release   : $NEW_DIR"
@@ -125,7 +164,7 @@ add_key QUEUE_CONNECTION     QUEUE_CONNECTION  sync
 # --- Dependencies ----------------------------------------------------------
 
 say "Installing production dependencies"
-( cd "$NEW_DIR" && "$COMPOSER" install --no-dev --optimize-autoloader )
+( cd "$NEW_DIR" && run_composer install --no-dev --optimize-autoloader )
 
 # --- Swap ------------------------------------------------------------------
 #
