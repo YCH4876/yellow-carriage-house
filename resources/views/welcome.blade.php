@@ -2,18 +2,25 @@
 @section('main')
 
 <body class="antialiased">
+    {{-- The hero is fixed behind the page; #homeSpacer reserves a screenful so
+         the content below starts under it and then scrolls up over it. This is
+         done with position:fixed rather than background-attachment:fixed,
+         which iOS Safari does not render reliably. --}}
     <div id="homeDiv">
-        <div class="overlayDark pt-5 pb-5">
-            <div class="container pt-5 pb-5">
-                <div class="text-center text-white justify-content-center align-self-center pt-5 pb-5">
-                    <h1 class="mb-2 pt-5 font-weight-bold cursive text-white heading-text">Yellow Carriage House</h1>
-                    <h5 class="font-weight-light pb-5">Located in the heart of Horse Country & the Bourbon Trail</h5>
-                </div>
+        <div class="overlayDark">
+            <div class="container text-center text-white">
+                <h1 class="mb-2 font-weight-bold cursive text-white heading-text">Yellow Carriage House</h1>
+                <h5 class="font-weight-light">Located in the heart of Horse Country &amp; the Bourbon Trail</h5>
             </div>
         </div>
+        <a href="#homeContent" class="hero-scroll-cue" aria-label="See more">
+            <span class="hero-scroll-label">See More</span>
+            <i class="bi bi-chevron-down hero-chevron" aria-hidden="true"></i>
+        </a>
     </div>
+    <div id="homeSpacer" aria-hidden="true"></div>
 
-    <div id="" class="bg-light pb-5 pt-5">
+    <div id="homeContent" class="bg-light pb-5 pt-5 home-content">
         <div class="container">
             <div class="">
                 <h2 class="text-center text-subtitle">Relax, Refresh, and Unwind</h2>
@@ -46,7 +53,7 @@
             <div class="row">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/king-lee/1.jpg') }}" class="card-img-top"
+                        <img src="{{ asset_v('img/rooms/king-lee/1.jpg') }}" class="card-img-top"
                             alt="King Lee Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">
@@ -60,7 +67,7 @@
                 {{--
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/windsor-queen/1.jpg') }}" class="card-img-top"
+                        <img src="{{ asset_v('img/rooms/windsor-queen/1.jpg') }}" class="card-img-top"
                             alt="The Windsor Queen Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">
@@ -76,7 +83,7 @@
                 --}}
                 <div class="col-lg-6">
                     <div class="card shadow">
-                        <img src="{{ asset('img/rooms/the-carriage-house-apartment-suite/queen-suite-1.jpg') }}"
+                        <img src="{{ asset_v('img/rooms/the-carriage-house-apartment-suite/queen-suite-1.jpg') }}"
                             class="card-img-top" alt="The Carriage House Queen Suite Image">
                         <div class="card-body">
                             <div class="card-title-text">

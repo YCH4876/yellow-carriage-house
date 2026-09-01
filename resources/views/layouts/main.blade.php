@@ -21,7 +21,14 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/311d1c9e91.js" crossorigin="anonymous"></script>
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset_v('css/main.css') }}">
+    {{-- The hero photo is set here rather than in main.css so it carries the
+         same cache-busting version as every other asset. --}}
+    <style>
+        :root {
+            --hero-image: url("{{ asset_v('img/home.jpg') }}");
+        }
+    </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTNB03FHYQ"></script>
     <script>
@@ -39,7 +46,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="{{ asset('img/logo/logo.png') }}" class="header-logo"><span
+            <a class="navbar-brand" href="/"><img src="{{ asset_v('img/logo/logo.png') }}" class="header-logo"><span
                     id="header-text">Yellow Carriage House</span></a>
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -103,7 +110,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset_v('js/main.js') }}"></script>
 </body>
 
 </html>

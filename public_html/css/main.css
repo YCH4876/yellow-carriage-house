@@ -172,7 +172,17 @@ HOME PAGE
 ************************************************************/
 
 .heading-text {
-    font-size: 4em;
+    /* Scales with the viewport so it never overflows a phone, and never
+       outgrows the hero on a large display. */
+    font-size: clamp(2.25rem, 9vw, 4em);
+}
+
+/* The hero is position:fixed, so it would otherwise paint over the static
+   header and footer. Both need to sit above it in the stacking order. */
+header,
+footer {
+    position: relative;
+    z-index: 2;
 }
 
 #header-text {
@@ -181,9 +191,139 @@ HOME PAGE
     margin-left: 15px;
 }
 
+/* ---------------------------------------------------------------------------
+   Home hero
+   ---------------------------------------------------------------------------
+   The hero is pinned to the viewport and the page content scrolls up over it.
+   This uses position:fixed rather than background-attachment:fixed, which iOS
+   Safari renders unreliably (it commonly ignores it or stutters badly).
+
+   The image itself comes from --hero-image, set in layouts/main.blade.php so it
+   can carry a cache-busting version. A URL hardcoded here could not: replacing
+   the photo in place would leave returning visitors seeing the previous one out
+   of their browser cache.
+--------------------------------------------------------------------------- */
+
 #homeDiv {
-    background: url("/img/home.jpg");
-    background-repeat: none;
-    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh; /* dvh accounts for mobile browser chrome; vh is the fallback */
+    z-index: 0;
+    background-image: var(--hero-image);
+    background-repeat: no-repeat;
     background-position: center;
+    /* Portrait and narrow screens crop, because "contain" here would shrink the
+       photo to a thin strip with most of the screen empty. */
+    background-size: cover;
+    background-color: #241f1c;
+}
+
+/* Wide enough that the whole 3:2 photo can be shown without looking stranded. */
+@media (min-width: 768px) and (min-aspect-ratio: 5/4) {
+    #homeDiv {
+        background-size: contain;
+    }
+}
+
+#homeDiv .overlayDark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Reserves a screenful in normal flow so the content below starts beneath the
+   hero, then slides over it as the page scrolls. */
+#homeSpacer {
+    height: 100vh;
+    height: 100dvh;
+}
+
+/* Everything after the spacer sits above the fixed hero and is opaque, so it
+   covers the photo on the way up. */
+#homeSpacer~* {
+    position: relative;
+    z-index: 1;
+}
+
+.home-content {
+    background-color: #f8f9fa;
+}
+
+/* --- scroll cue ---------------------------------------------------------- */
+
+.hero-scroll-cue {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hero-scroll-cue:hover,
+.hero-scroll-cue:focus {
+    color: #fff;
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(3px);
+}
+
+.hero-chevron {
+    font-size: 1.75rem;
+    line-height: 1;
+    animation: heroChevronBounce 2.2s ease-in-out infinite;
+}
+
+@keyframes heroChevronBounce {
+
+    0%,
+    25%,
+    55%,
+    100% {
+        transform: translateY(0);
+    }
+
+    38% {
+        transform: translateY(-9px);
+    }
+
+    47% {
+        transform: translateY(-4px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-chevron {
+        animation: none;
+    }
+
+    .hero-scroll-cue {
+        transition: none;
+    }
+}
+
+/* Keep the title clear of the scroll cue on short screens. */
+@media (max-height: 520px) {
+    .hero-scroll-cue {
+        bottom: 0.75rem;
+    }
 }

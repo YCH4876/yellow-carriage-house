@@ -20,19 +20,19 @@
     <div id="gallery" class="container mt-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                <img src="{{ asset('img\rooms\gathering-room\1.jpg') }}" class="gallery-image "
+                <img src="{{ asset_v('img\rooms\gathering-room\1.jpg') }}" class="gallery-image "
                     alt="Gathering Room Image">
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                <img src="{{ asset('img\rooms\gathering-room\2.jpg') }}" class="gallery-image "
+                <img src="{{ asset_v('img\rooms\gathering-room\2.jpg') }}" class="gallery-image "
                     alt="Gathering Room Image">
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                <img src="{{ asset('img\rooms\gathering-room\3.jpg') }}" class="gallery-image "
+                <img src="{{ asset_v('img\rooms\gathering-room\3.jpg') }}" class="gallery-image "
                     alt="Gathering Room Image">
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 mb-3 mb-sm-0 gallery-image-container">
-                <img src="{{ asset('img\rooms\gathering-room\4.jpg') }}" class="gallery-image "
+                <img src="{{ asset_v('img\rooms\gathering-room\4.jpg') }}" class="gallery-image "
                     alt="Gathering Room Image">
             </div>
         </div>
