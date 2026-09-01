@@ -30,11 +30,10 @@
 
     <div class="alert alert-warning mt-5">
         <p>
-            2022 Kentucky Oaks and Derby (May 6th and May 7th, 2022). Tickets are available for purchase at
-            Kentuckyderby.com
+            Kentucky Oaks and Derby tickets are available for purchase at Kentuckyderby.com
         </p>
         <p>
-            The Yellow Carriage House is located 30 minutes from Churchill Downs (Louisville, KY)
+            The Yellow Carriage House is located 30 minutes from Churchill Downs (Louisville, KY).
         </p>
         <p>
             Keeneland daily tickets must be purchased in advance via keeneland.com.

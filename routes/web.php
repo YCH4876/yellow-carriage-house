@@ -24,7 +24,10 @@ Route::get('/local-attractions', function () {
  ROOMS
  ********************/
 Route::get('/rooms/king-lee-suite', [RoomController::class, 'index']);
-Route::get('/rooms/windsor-queen-suite-plus', [RoomController::class, 'index']);
+// Windsor Queen is intentionally not offered. Disabled on the live site and
+// kept that way here; its homepage card is commented out in welcome.blade.php
+// and its copy remains in RoomController. Re-enable both together.
+// Route::get('/rooms/windsor-queen-suite-plus', [RoomController::class, 'index']);
 Route::get('/rooms/the-carriage-house-apartment-suite', [RoomController::class, 'index']);
 Route::get('/gathering-room', function () {
     return view('rooms.gatheringRoom');
