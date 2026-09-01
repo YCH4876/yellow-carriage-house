@@ -14,12 +14,13 @@
 /.zed
 /auth.json
 /node_modules
-# /public/build is intentionally NOT ignored: this site is deployed without a
-# build step, so the compiled Vite assets are committed. Run `npm run build`
-# and commit public/build whenever resources/css or resources/js changes.
-/public/fonts-manifest.dev.json
-/public/hot
-/public/storage
+# /public_html/build is intentionally NOT ignored: this site is deployed
+# without a build step, so the compiled Vite assets are committed. Run
+# `npm run build` and commit public_html/build whenever resources/css or
+# resources/js changes.
+/public_html/fonts-manifest.dev.json
+/public_html/hot
+/public_html/storage
 /storage/*.key
 /storage/pail
 /vendor

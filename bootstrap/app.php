@@ -19,12 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
     })->create()
-    // Production (SiteGround) serves from "public_html"; local development uses
-    // the conventional "public". Laravel resolves the Vite manifest through
-    // public_path(), so this must match the directory that actually exists or
-    // @vite fails to find public/build/manifest.json.
-    ->usePublicPath(
-        is_dir($publicHtml = dirname(__DIR__).'/public_html')
-            ? $publicHtml
-            : dirname(__DIR__).'/public'
-    );
+    // This project's web root is "public_html" rather than Laravel's default
+    // "public", to match SiteGround's document root so the repo can be deployed
+    // by `git pull`. Laravel resolves the Vite manifest through public_path(),
+    // so without this @vite cannot find public_html/build/manifest.json.
+    ->usePublicPath(dirname(__DIR__).'/public_html');
