@@ -143,6 +143,14 @@ mkdir "$ROOT/old"
 rmdir "$NEW_DIR"
 echo "    previous install preserved in $ROOT/old"
 
+# The ACME challenge directory lives inside the document root and is used to
+# validate SSL certificate renewals. It is not in the repo, so it would
+# otherwise be left behind in old/ along with the rest of the old public_html.
+if [ -d "$ROOT/old/public_html/.well-known" ]; then
+    cp -R "$ROOT/old/public_html/.well-known" "$ROOT/public_html/"
+    echo "    carried over public_html/.well-known (SSL validation)"
+fi
+
 # --- Migrate and cache -----------------------------------------------------
 
 say "Running migrations"
