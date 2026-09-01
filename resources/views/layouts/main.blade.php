@@ -96,7 +96,7 @@
 </main>
 
 <footer class="bg-dark text-center py-3">
-    <small class="text-white">Copyright &copy; 2023 Yellow Carriage House</small>
+    <small class="text-white">Copyright &copy; {{ date('Y') }} Yellow Carriage House</small>
 </footer>
 
 <!-- Bootstrap JS -->
