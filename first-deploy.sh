@@ -193,7 +193,12 @@ fi
 # --- Migrate and cache -----------------------------------------------------
 
 say "Running migrations"
-( cd "$ROOT" && "$PHP" artisan migrate --force )
+# Must not abort the deploy: a connection failure here would skip the cache
+# build below and leave the site half-deployed. See the note in deploy.sh.
+if ! ( cd "$ROOT" && "$PHP" artisan migrate --force ); then
+    warn "migrations did not run - the database was unreachable."
+    warn "continuing, because nothing in this site queries it."
+fi
 
 say "Building caches"
 ( cd "$ROOT" && "$PHP" artisan optimize )
