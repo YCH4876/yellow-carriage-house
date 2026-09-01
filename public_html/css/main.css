@@ -241,7 +241,12 @@ footer {
     z-index: 0;
     background-image: var(--hero-image);
     background-repeat: no-repeat;
-    background-position: center;
+    /* The photo is 4:3 but this frame is far wider, so filling it crops roughly
+       a quarter off the top and bottom. Centring split that evenly and spent
+       the bottom of the frame on driveway while clipping the roofline. Biasing
+       the focal point upwards keeps the whole roof in shot and trims the gravel
+       instead. */
+    background-position: center 15%;
     /* Fills the viewport edge to edge at every size. "contain" was tried here
        so the whole photo would be visible, but on a screen wider than the
        photo's 3:2 it left dark bars down both sides. Filling reads better; the
