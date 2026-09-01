@@ -98,7 +98,20 @@ run_composer install --no-dev --optimize-autoloader
 echo "==> Running migrations"
 # Guarded migrations; safe to run when there is nothing pending.
 # NEVER add rollback/fresh/refresh here - down() drops the users table.
-"$PHP" artisan migrate --force
+#
+# A connection failure must not abort the deploy. This site issues no database
+# queries at all - every route returns a view - and the production credentials
+# do not currently connect. Letting `set -e` kill the script here would skip the
+# cache rebuild below, leaving the site serving the previous config and routes
+# while appearing to have deployed successfully. That silent failure is far
+# worse than not migrating.
+if ! "$PHP" artisan migrate --force; then
+    echo
+    echo "    WARNING: migrations did not run - the database was unreachable."
+    echo "             Continuing, because nothing in this site queries it."
+    echo "             See HOSTING.md if that is no longer true."
+    echo
+fi
 
 echo "==> Rebuilding caches"
 # Must run after every pull: a stale config/route cache silently keeps serving
