@@ -204,8 +204,18 @@ footer {
 
 #header-text {
     font-family: 'Dancing Script';
-    font-size: 28px !important;
-    margin-left: 15px;
+    /* Was a flat 28px, which made the brand 290px wide. With Bootstrap's 16px
+       brand margin and the 56px toggler that needs 362px, more than a 375px
+       phone has once the container's padding is taken off - so the toggler
+       wrapped to a second row and the sticky header stood 124px tall, 15% of
+       the screen, permanently. Scaling it keeps brand and toggler on one row
+       down to a 320px phone, and still reaches the original 28px from the sm
+       breakpoint upwards. */
+    font-size: clamp(1.25rem, 5.6vw, 1.75rem) !important;
+    /* The gap tightens with the text. At 320px the brand was overshooting the
+       available width by 2px, which is enough to wrap the toggler onto its own
+       row again. */
+    margin-left: clamp(8px, 2.5vw, 15px);
 }
 
 /* ---------------------------------------------------------------------------
