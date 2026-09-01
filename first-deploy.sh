@@ -74,6 +74,16 @@ say "Checking the environment"
   || die "$PHP is $("$PHP" -r 'echo PHP_VERSION;' 2>/dev/null); Laravel 13 needs 8.3+. Set PHP_BIN to a newer binary."
 command -v "$COMPOSER" >/dev/null 2>&1 || die "composer binary '$COMPOSER' not found. Set COMPOSER_BIN."
 
+# Run composer under the PHP chosen above. SiteGround ships `composer` as a
+# shell wrapper that execs "$PHP_BIN" resolved against /usr/local/bin, so it
+# takes a bare binary name rather than a path. Left alone it uses the account
+# default - 8.2 on this host - and refuses to install anything at all, because
+# composer.json requires ^8.3. Where composer is not that wrapper, PHP_BIN is
+# simply ignored and this is a no-op.
+run_composer() {
+    PHP_BIN="$(basename "$PHP")" "$COMPOSER" "$@"
+}
+
 echo "    app root      : $ROOT"
 echo "    new release   : $NEW_DIR"
 echo "    php           : $PHP ($("$PHP" -r 'echo PHP_VERSION;'))"
@@ -154,7 +164,7 @@ add_key QUEUE_CONNECTION     QUEUE_CONNECTION  sync
 # --- Dependencies ----------------------------------------------------------
 
 say "Installing production dependencies"
-( cd "$NEW_DIR" && "$COMPOSER" install --no-dev --optimize-autoloader )
+( cd "$NEW_DIR" && run_composer install --no-dev --optimize-autoloader )
 
 # --- Swap ------------------------------------------------------------------
 #

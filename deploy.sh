@@ -66,6 +66,16 @@ if ! command -v "$COMPOSER" >/dev/null 2>&1; then
     exit 1
 fi
 
+# Run composer under the PHP chosen above. SiteGround ships `composer` as a
+# shell wrapper that execs "$PHP_BIN" resolved against /usr/local/bin, so it
+# takes a bare binary name rather than a path. Left alone it uses the account
+# default - 8.2 on this host - and refuses to install anything at all, because
+# composer.json requires ^8.3. Where composer is not that wrapper, PHP_BIN is
+# simply ignored and this is a no-op.
+run_composer() {
+    PHP_BIN="$(basename "$PHP")" "$COMPOSER" "$@"
+}
+
 if [ ! -f .env ]; then
     echo "ERROR: no .env in $(pwd). Refusing to deploy." >&2
     exit 1
@@ -83,7 +93,7 @@ echo "==> Pulling $(git rev-parse --abbrev-ref HEAD)"
 git pull --ff-only
 
 echo "==> Installing PHP dependencies"
-"$COMPOSER" install --no-dev --optimize-autoloader
+run_composer install --no-dev --optimize-autoloader
 
 echo "==> Running migrations"
 # Guarded migrations; safe to run when there is nothing pending.
