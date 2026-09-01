@@ -129,7 +129,30 @@ database credentials to anyone who triggers it. The stack trace is in the log.
 | Changes deployed but not visible | Stale config/route cache | `php artisan optimize:clear` |
 | "Please provide a valid cache path" | `storage/` missing or unwritable | Recreate `storage/framework/{cache,sessions,views}` |
 | "table users already exists" | Migration state not reconciled | Guarded migrations should prevent this; check `migrate:status` |
+| `Access denied for user 'root'@'localhost'` | Expected — see below | Not a fault. Deploys continue past it. |
 | SSL renewal failing | `.well-known` lost in a deploy | Restore from `old/public_html/.well-known` |
+
+### The database is not connected, and that is fine
+
+`artisan migrate` fails on this host with:
+
+```
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+```
+
+`.env` has an empty `DB_PASSWORD` and a `DB_USERNAME` MySQL reads as `root`.
+These credentials have never worked, and it has never mattered: **this site
+issues no database queries at all.** Every route returns a view. Nothing reads
+or writes a model.
+
+`deploy.sh` therefore attempts migrations but does not abort on a connection
+failure — aborting would skip the cache rebuild and leave the site serving the
+previous config and routes while appearing to have deployed cleanly, which is a
+much worse failure than not migrating.
+
+If the site ever gains a feature that needs the database, fix the credentials
+first, or point `DB_CONNECTION` at SQLite. Until then the warning during a
+deploy is expected and can be ignored.
 
 ### Full rollback
 
