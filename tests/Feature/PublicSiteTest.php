@@ -74,13 +74,82 @@ class PublicSiteTest extends TestCase
         $this->get('/')->assertSee('Copyright &copy; '.date('Y'), false);
     }
 
-    public function test_homepage_shows_the_current_contact_number(): void
+    public static function pageWithPhoneProvider(): array
     {
-        // Regression guard: the repo once carried a stale number that would
-        // have been republished over the correct one.
-        $this->get('/')
-            ->assertSee('802-4310', false)
-            ->assertDontSee('536-5338', false);
+        return [
+            'home' => ['/'],
+            'policies' => ['/policies'],
+            'king lee' => ['/rooms/king-lee-suite'],
+            'carriage house' => ['/rooms/the-carriage-house-apartment-suite'],
+        ];
+    }
+
+    /**
+     * The old number survived on the policies and room pages long after the
+     * homepage was corrected - including on the "Book your stay" button, which
+     * is the page's main call to action. The original version of this test only
+     * checked the homepage, so it passed the whole time. Check every page that
+     * carries a number, and check the tel: links as well as the visible text:
+     * a link can dial something different from what it displays.
+     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('pageWithPhoneProvider')]
+    public function test_pages_show_only_the_current_contact_number(string $uri): void
+    {
+        $this->get($uri)
+            ->assertOk()
+            ->assertDontSee('536-5338', false)
+            ->assertDontSee('tel:5025365338', false);
+    }
+
+    /**
+     * The Book Now button used to emit two href attributes on one tag, so which
+     * one applied was down to browser parsing rather than intent, and it did
+     * three different things depending on the page. It now dials, everywhere.
+     */
+    public static function everyPageProvider(): array
+    {
+        // Every page that renders the layout, room pages included - the Airbnb
+        // link this replaced lived on a room page, so omitting them would leave
+        // the change unverified exactly where it mattered.
+        return [
+            'home' => ['/'],
+            'policies' => ['/policies'],
+            'special events' => ['/special-events'],
+            'local attractions' => ['/local-attractions'],
+            'gathering room' => ['/gathering-room'],
+            'king lee' => ['/rooms/king-lee-suite'],
+            'carriage house' => ['/rooms/the-carriage-house-apartment-suite'],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('everyPageProvider')]
+    public function test_book_now_button_dials_on_every_page(string $uri): void
+    {
+        $html = $this->get($uri)->assertOk()->getContent();
+
+        $this->assertMatchesRegularExpression(
+            '/<a class="btn btn-primary" href="tel:5028024310">\s*Book Now<\/a>/',
+            $html,
+            "Book Now on $uri should be a single tel: link"
+        );
+    }
+
+    public function test_contact_numbers_and_their_links_agree(): void
+    {
+        foreach (['/', '/policies', '/rooms/king-lee-suite'] as $uri) {
+            $html = $this->get($uri)->assertOk()->getContent();
+
+            $this->assertStringContainsString('tel:5028024310', $html,
+                "$uri should link to the current number");
+
+            // Every tel: link on the page must point at the current number.
+            preg_match_all('/tel:(\d+)/', $html, $matches);
+            $this->assertNotEmpty($matches[1], "$uri should have at least one tel: link");
+            foreach (array_unique($matches[1]) as $dialled) {
+                $this->assertSame('5028024310', $dialled,
+                    "$uri has a tel: link dialling $dialled");
+            }
+        }
     }
 
     public function test_removed_auth_routes_are_gone(): void
