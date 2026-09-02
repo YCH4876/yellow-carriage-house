@@ -84,13 +84,23 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="/local-attractions">Local Attractions</a>
                     </li>
+                    {{-- Book Now dials on every page.
+
+                         This was previously a conditional that emitted a second
+                         href after the first, which is invalid: browsers honour
+                         whichever comes first, so the behaviour was accidental
+                         rather than chosen. It also did three different things
+                         depending on the page - scrolled to #contact on most,
+                         dialled on the Carriage House page, and opened an Airbnb
+                         listing on King Lee.
+
+                         The Airbnb listings are no longer linked anywhere on the
+                         site. Kept here so they are not lost:
+                           King Lee     https://www.airbnb.com/rooms/562950629780152619
+                           Windsor Queen https://www.airbnb.com/rooms/562981477179776189
+                    --}}
                     <li class="nav-item ms-0 ms-lg-4">
-                        <a class="btn btn-primary" @isset($roomName) @if($roomName=='king-lee-suite' )
-                            href="https://www.airbnb.com/rooms/562950629780152619" target="_blank"
-                            @elseif($roomName=='windsor-queen-suite-plus' )
-                            href="https://www.airbnb.com/rooms/562981477179776189" target="_blank" @else
-                            href="tel:5028024310" @endif @endisset href="/#contact">
-                            Book Now</a>
+                        <a class="btn btn-primary" href="tel:5028024310">Book Now</a>
                     </li>
                 </ul>
             </div>

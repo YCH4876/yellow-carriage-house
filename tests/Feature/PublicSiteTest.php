@@ -101,6 +101,39 @@ class PublicSiteTest extends TestCase
             ->assertDontSee('tel:5025365338', false);
     }
 
+    /**
+     * The Book Now button used to emit two href attributes on one tag, so which
+     * one applied was down to browser parsing rather than intent, and it did
+     * three different things depending on the page. It now dials, everywhere.
+     */
+    public static function everyPageProvider(): array
+    {
+        // Every page that renders the layout, room pages included - the Airbnb
+        // link this replaced lived on a room page, so omitting them would leave
+        // the change unverified exactly where it mattered.
+        return [
+            'home' => ['/'],
+            'policies' => ['/policies'],
+            'special events' => ['/special-events'],
+            'local attractions' => ['/local-attractions'],
+            'gathering room' => ['/gathering-room'],
+            'king lee' => ['/rooms/king-lee-suite'],
+            'carriage house' => ['/rooms/the-carriage-house-apartment-suite'],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('everyPageProvider')]
+    public function test_book_now_button_dials_on_every_page(string $uri): void
+    {
+        $html = $this->get($uri)->assertOk()->getContent();
+
+        $this->assertMatchesRegularExpression(
+            '/<a class="btn btn-primary" href="tel:5028024310">\s*Book Now<\/a>/',
+            $html,
+            "Book Now on $uri should be a single tel: link"
+        );
+    }
+
     public function test_contact_numbers_and_their_links_agree(): void
     {
         foreach (['/', '/policies', '/rooms/king-lee-suite'] as $uri) {
