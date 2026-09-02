@@ -7,7 +7,7 @@
 # SiteGround's default CLI php is often older than the web php. If `php -v`
 # reports anything below 8.3, point this at the right binary instead:
 #
-#   PHP_BIN=/usr/local/php83/bin/php ./deploy.sh
+#   PHP_BIN=/usr/local/bin/php83 ./deploy.sh
 #
 set -euo pipefail
 
@@ -27,8 +27,8 @@ detect_php() {
        && php -r 'exit(PHP_VERSION_ID >= 80300 && PHP_VERSION_ID < 80600 ? 0 : 1);' 2>/dev/null; then
         printf 'php'; return
     fi
-    # SiteGround exposes CLI builds as /usr/local/bin/php84 -> php84/bin/php-cli.
-    # The bare /usr/local/php84/bin/php is the CGI build, which has no -r flag;
+    # SiteGround exposes CLI builds as /usr/local/bin/php85 -> php85/bin/php-cli.
+    # The bare /usr/local/php85/bin/php is the CGI build, which has no -r flag;
     # the numeric check below discards it (and anything else non-CLI).
     for candidate in /usr/local/bin/php8* /usr/local/php8*/bin/php-cli \
                      /usr/local/php8*/bin/php /opt/php8*/bin/php /usr/bin/php8.*; do
@@ -48,13 +48,13 @@ PHP="$(detect_php)"
 
 if [ -z "$PHP" ] || ! command -v "$PHP" >/dev/null 2>&1; then
     echo "ERROR: no PHP between 8.3 and 8.5 found." >&2
-    echo "       Set PHP_BIN explicitly, e.g. PHP_BIN=/usr/local/php84/bin/php" >&2
+    echo "       Set PHP_BIN explicitly, e.g. PHP_BIN=/usr/local/bin/php85" >&2
     exit 1
 fi
 
 if ! "$PHP" -r 'exit(PHP_VERSION_ID >= 80300 ? 0 : 1);' 2>/dev/null; then
     echo "ERROR: $PHP is $("$PHP" -r 'echo PHP_VERSION;' 2>/dev/null), but Laravel 13 needs 8.3+." >&2
-    echo "       Set PHP_BIN to a newer binary, e.g. PHP_BIN=/usr/local/php84/bin/php" >&2
+    echo "       Set PHP_BIN to a newer binary, e.g. PHP_BIN=/usr/local/bin/php85" >&2
     exit 1
 fi
 

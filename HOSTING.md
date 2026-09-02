@@ -48,7 +48,7 @@ web root, so they cannot be fetched over HTTP.
 **1. The PHP version is chosen in `.htaccess`, not just the control panel.**
 
 ```apache
-AddHandler application/x-httpd-php84 .php .php5 .php4 .php3
+AddHandler application/x-httpd-php85 .php .php5 .php4 .php3
 ```
 
 This is a per-directory `mod_php` handler and it **overrides Site Tools**.
@@ -81,24 +81,26 @@ ever restore that old install from `old/`, that bind is what it relies on.
 | SSH | `ssh ych` (alias in `~/.ssh/config`), key `~/.ssh/id_ed25519` |
 | Host / port | `ssh.yellowcarriagehouse.com`, port `18765` |
 | App root | `~/www/yellowcarriagehouse.com` |
-| Default CLI `php` | **8.2.33 — too old for Laravel 13** |
+| Default CLI `php` | Follows the Site Tools PHP version — currently **8.5.10**. It was 8.2 while the site ran Laravel 8, which is too old for Laravel 13, so never assume it is current. |
 | Usable CLI PHP | `/usr/local/bin/php83`, `php84`, `php85` |
 | PHP 8.6 | Installed, but **do not use** — `nette/*` caps at 8.5 |
-| Composer | 2.4.3, a shell wrapper honouring `PHP_BIN` (bare name, e.g. `php84`) |
+| Composer | 2.4.3, a shell wrapper honouring `PHP_BIN` (bare name, e.g. `php85`) |
 | Database | MySQL 8.4 |
 | Git | 2.55.0 |
 
 ### Two traps specific to this host
 
-**`/usr/local/php84/bin/php` is the CGI build** and rejects `-r`. The CLI build
-is `/usr/local/bin/php84`. Scripts that scan for PHP binaries must check the
+**`/usr/local/php85/bin/php` is the CGI build** and rejects `-r`. The CLI build
+is `/usr/local/bin/php85`. Scripts that scan for PHP binaries must check the
 right path.
 
-**Composer runs under the account default (8.2)** unless told otherwise, and
-will refuse to install anything because `composer.json` requires `^8.3`:
+**Composer runs under the account default PHP** unless told otherwise. That
+tracks the Site Tools setting, so it is only safe by coincidence — when the
+account ran 8.2 it refused to install anything at all, because `composer.json`
+requires `^8.3`. Always pin it rather than relying on the default:
 
 ```bash
-PHP_BIN=php84 composer install --no-dev --optimize-autoloader
+PHP_BIN=php85 composer install --no-dev --optimize-autoloader
 ```
 
 A full path does not work — the wrapper resolves `PHP_BIN` against
@@ -129,30 +131,33 @@ database credentials to anyone who triggers it. The stack trace is in the log.
 | Changes deployed but not visible | Stale config/route cache | `php artisan optimize:clear` |
 | "Please provide a valid cache path" | `storage/` missing or unwritable | Recreate `storage/framework/{cache,sessions,views}` |
 | "table users already exists" | Migration state not reconciled | Guarded migrations should prevent this; check `migrate:status` |
-| `Access denied for user 'root'@'localhost'` | Expected — see below | Not a fault. Deploys continue past it. |
+| `Access denied for user 'root'@'localhost'` | Bad DB credentials, or config cached before they were fixed | `php artisan config:clear`, then check `.env`. Deploys continue past it — see below |
 | SSL renewal failing | `.well-known` lost in a deploy | Restore from `old/public_html/.well-known` |
 
-### The database is not connected, and that is fine
+### The database
 
-`artisan migrate` fails on this host with:
+A MySQL database is connected and migrated. It holds the nine tables Laravel's
+own migrations create, all empty — **the site issues no database queries at
+all.** Every route returns a view, so nothing reads or writes a model.
+
+For a long period the credentials in `.env` did not work at all (an empty
+`DB_PASSWORD` and a `DB_USERNAME` MySQL read as `root`), and nobody noticed,
+precisely because nothing queries it. If you see this, that is the cause:
 
 ```
 SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
 ```
 
-`.env` has an empty `DB_PASSWORD` and a `DB_USERNAME` MySQL reads as `root`.
-These credentials have never worked, and it has never mattered: **this site
-issues no database queries at all.** Every route returns a view. Nothing reads
-or writes a model.
+`deploy.sh` attempts migrations but **does not abort on a connection failure**.
+Aborting would skip the cache rebuild and leave the site serving the previous
+config and routes while appearing to have deployed cleanly — a far worse failure
+than a skipped migration. So a deploy will still succeed if the credentials
+break again; watch for the warning rather than assuming a green deploy means the
+database is healthy.
 
-`deploy.sh` therefore attempts migrations but does not abort on a connection
-failure — aborting would skip the cache rebuild and leave the site serving the
-previous config and routes while appearing to have deployed cleanly, which is a
-much worse failure than not migrating.
-
-If the site ever gains a feature that needs the database, fix the credentials
-first, or point `DB_CONNECTION` at SQLite. Until then the warning during a
-deploy is expected and can be ignored.
+**After editing `.env`, run `php artisan config:clear`.** Config is cached, so
+credential changes have no effect until it is, and the failure looks identical
+to a wrong password.
 
 ### Full rollback
 

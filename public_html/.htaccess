@@ -24,4 +24,4 @@
 # overrides the version chosen in Site Tools. It read "php82" on the live site;
 # Laravel 13 requires 8.3+, so it must be at least php83 here. Keep this in
 # sync with the version selected in Site Tools > Devs > PHP Manager.
-AddHandler application/x-httpd-php84 .php .php5 .php4 .php3
+AddHandler application/x-httpd-php85 .php .php5 .php4 .php3
