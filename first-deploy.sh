@@ -38,8 +38,8 @@ detect_php() {
        && php -r 'exit(PHP_VERSION_ID >= 80300 && PHP_VERSION_ID < 80600 ? 0 : 1);' 2>/dev/null; then
         printf 'php'; return
     fi
-    # SiteGround exposes CLI builds as /usr/local/bin/php84 -> php84/bin/php-cli.
-    # The bare /usr/local/php84/bin/php is the CGI build, which has no -r flag;
+    # SiteGround exposes CLI builds as /usr/local/bin/php85 -> php85/bin/php-cli.
+    # The bare /usr/local/php85/bin/php is the CGI build, which has no -r flag;
     # the numeric check below discards it (and anything else non-CLI).
     for candidate in /usr/local/bin/php8* /usr/local/php8*/bin/php-cli \
                      /usr/local/php8*/bin/php /opt/php8*/bin/php /usr/bin/php8.*; do
@@ -69,7 +69,7 @@ say "Checking the environment"
 [ -e "$ROOT/old" ]        && die "$ROOT/old already exists. Remove or rename it before running this."
 
 [ -n "$PHP" ] && command -v "$PHP" >/dev/null 2>&1 \
-  || die "No PHP between 8.3 and 8.5 found. Set PHP_BIN explicitly, e.g. PHP_BIN=/usr/local/php84/bin/php"
+  || die "No PHP between 8.3 and 8.5 found. Set PHP_BIN explicitly, e.g. PHP_BIN=/usr/local/bin/php85"
 "$PHP" -r 'exit(PHP_VERSION_ID >= 80300 ? 0 : 1);' 2>/dev/null \
   || die "$PHP is $("$PHP" -r 'echo PHP_VERSION;' 2>/dev/null); Laravel 13 needs 8.3+. Set PHP_BIN to a newer binary."
 command -v "$COMPOSER" >/dev/null 2>&1 || die "composer binary '$COMPOSER' not found. Set COMPOSER_BIN."
