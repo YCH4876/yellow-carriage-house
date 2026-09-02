@@ -34,7 +34,7 @@
             </li>
             <li>
                 Any party, celebration or event must complete our Special Event contract. Please call us for more
-                information <a href="tel:5025365338" class="text-dark text-decoration-none">(502) 536-5338</a>.
+                information <a href="tel:5028024310" class="text-dark text-decoration-none">(502) 802-4310</a>.
             </li>
             <li>
                 Yellow Carriage House is a smoke-free property. A charge of $250.00 will be added to the bill of any

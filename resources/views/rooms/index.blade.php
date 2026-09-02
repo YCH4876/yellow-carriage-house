@@ -139,7 +139,7 @@
                 </p>
                 <hr class="my-4">
                 <div class="d-grid mb-4"></div>
-                <a href="tel:5025365338" class="btn btn-primary"><i class="bi bi-calendar-check-fill me-2"></i>Book your
+                <a href="tel:5028024310" class="btn btn-primary"><i class="bi bi-calendar-check-fill me-2"></i>Book your
                     stay</a>
             </div>
         </div>
@@ -269,9 +269,9 @@
                 <h5>Yellow Carriage House</h5>
                 <hr>
                 <p><i class="bi bi-person-fill me-3"></i>Amy Steele, Innkeeper</p>
-                <p><a href="tel:5025365338" class="text-dark text-decoration-none"><i
+                <p><a href="tel:5028024310" class="text-dark text-decoration-none"><i
                             class="bi bi-telephone-fill me-3"></i>(502)
-                        536-5338</a></p>
+                        802-4310</a></p>
                 <p><a href="mailto:info@yellowcarriagehouse.com" class="text-dark text-decoration-none"><i
                             class="bi bi-envelope-fill me-3"></i>info@yellowcarriagehouse.com</a></p>
                 <p><a href="https://www.google.com/maps/dir//Yellow+Carriage+House+4876+Shelbyville+Rd+Simpsonville,+KY+40067/@38.2179679,-85.3091878,13z/data=!4m5!4m4!1m0!1m2!1m1!1s0x8869bfd72f30566b:0x6f2052f07c06e4f4"
